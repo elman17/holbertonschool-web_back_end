@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Task"""
+"""This module provides an asynchronous routine"""
 
 import asyncio
 from typing import List
