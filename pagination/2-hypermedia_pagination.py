@@ -24,10 +24,13 @@ class Server:
 
     def dataset(self) -> List[List]:
         """Cache dataset"""
+
         if self.__dataset__ is None:
             with open(self.DATA_FILE) as f:
-                reader = [row for row in reader]
+                reader = csv.reader(f)
+                self.dataset = [row for row in reader]
             self.__dataset__ = self.dataset[1:]
+
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[list]:
