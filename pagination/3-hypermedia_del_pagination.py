@@ -29,7 +29,7 @@ class Server:
         """Dataset indexed by sorting position"""
         if self.__indexed_dataset is None:
             dataset = self.dataset()
-            truncated_datasset = dataset[:1000]
+            truncated_dataset = dataset[:1000]
             self.__indexed_dataset = {i: dataset[i] for i in range(len(dataset))}
         return self.__indexed_dataset
 
@@ -49,7 +49,7 @@ class Server:
 
         while len(data) < page_size and current_index < data_len:
             item = indexed_data.get(current_index)
-            if item is None:
+            if item is not None:
                 data.append(item)
             current_index += 1
 
