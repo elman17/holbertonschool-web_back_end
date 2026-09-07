@@ -10,7 +10,7 @@ from typing import Dict, List, Tuple, Any
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """Calculates the start and end indexes for a given page_size"""
     start_index = (page - 1) * page_size
-    end_index = page_size
+    end_index = page * page_size
     return (start_index, end_index)
 
 
@@ -20,7 +20,7 @@ class Server:
     DATA_FILE = "Popular_Baby_Names.csv"
 
     def __init__(self):
-        self.__dataset__ = None
+        self.__dataset = None
 
     def dataset(self) -> List[List]:
         """Cache dataset"""
@@ -29,7 +29,7 @@ class Server:
             with open(self.DATA_FILE) as f:
                 reader = csv.reader(f)
                 dataset = [row for row in reader]
-            self.__dataset = self.dataset[1:]
+            self.__dataset = dataset[1:]
 
         return self.__dataset
 
@@ -57,6 +57,7 @@ class Server:
         prev_page = page - 1 if page > 1 else None
 
         return {
+            "data": data,
             "page_size": len(data),
             "page": page,
             "next_page": next_page,
