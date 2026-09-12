@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Module that lists all documents"""
 
 
 def list_all(mongo_collection):
